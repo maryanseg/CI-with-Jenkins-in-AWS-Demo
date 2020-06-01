@@ -14,11 +14,11 @@
     <distributionManagement>
         <repository>
             <id>releases</id>
-            <name>maven-realease</name>
+            <name>maven-releases</name>
             <url>http://localhost:8082/repository/maven-releases/</url>
         </repository>
         <repository>
-            <id>snapshot</id>
+            <id>snapshots</id>
             <name>maven-snapshots</name>
             <url>http://localhost:8082/repository/maven-snapshots/</url>
         </repository>
