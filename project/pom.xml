@@ -7,7 +7,7 @@
         <version>1.0-SACH</version>
     </parent>
 
-    <artifactId>projectRnD</artifactId>
+    <artifactId>project</artifactId>
     <packaging>war</packaging>
     <name>projectRnD</name>
     
