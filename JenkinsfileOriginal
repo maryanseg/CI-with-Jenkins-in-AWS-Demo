@@ -11,10 +11,11 @@ pipeline {
 		script {
 		    def scannerHome = tool 'sonarqube';
 		    withSonarQubeEnv("sonarqube-container") {
-		    sh "${tool("sonarqube")}/bin/sonar-scanner \
-		    -Dsonar.projectKey=test-node-js \
-		    -Dsonar.java.binaries=project/target \
-		    -Dsonar.host.url=http://localhost:9000"
+		    	sh "${tool("sonarqube")}/bin/sonar-scanner \
+		    	-Dsonar.projectKey=test-node-js \
+		    	-Dsonar.java.binaries=project/target \
+		    	-Dsonar.host.url=http://localhost:9000"
+		    }	
                 }
             }
         }
