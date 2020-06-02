@@ -9,7 +9,6 @@ pipeline {
 	stage('Quality-Gate') {
 	    steps {
 		script {
-		    def scannerHome = tool 'sonarqube';
 		    withSonarQubeEnv("sonarqube-container") {
 		    	bat "-Dsonar.projectKey=myProject \
 		    	-Dsonar.java.binaries=project/target \
