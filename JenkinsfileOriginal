@@ -9,10 +9,8 @@ pipeline {
 	stage('Quality-Gate') {
 	    steps {
 		script {
-		    withSonarQubeEnv("sonarqube-container") {
-		    	bat "sonar.projectKey=myProject \
-		    	sonar.java.binaries=project/target \
-		    	sonar.host.url=http://localhost:9000"
+		    withSonarQubeEnv("sonar") {
+		    	bat (sonar.projectKey:'myProject', sonar.java.binaries:'project/target', sonar.host.url='http://localhost:9000')
 		    }	
                 }
             }
