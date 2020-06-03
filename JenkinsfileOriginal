@@ -6,11 +6,8 @@ pipeline {
 	        git credentialsId: 'github', url: 'https://github.com/cooldsachin/CI-with-Jenkins-in-AWS-Demo.git'
 	    }
 	}
-	stage('build && SonarQube analysis') {
-            steps {
-                withSonarQubeEnv('sonar') {
-                    withMaven(maven:'Maven 3.6.3') {
-                        sh 'mvn clean package sonar:sonar'
+	stage('build') {
+            bat 'mvn package'
                     }
 		} 
             }
