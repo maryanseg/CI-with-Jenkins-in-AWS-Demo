@@ -10,7 +10,7 @@ pipeline {
 	    steps {
 		script {
 		    withSonarQubeEnv("sonar") {
-		    	bat (sonar.projectKey:'myProject', sonar.java.binaries:'project/target')
+		    	bat ('sonar.projectKey': 'myProject', 'sonar.java.binaries': 'project/target')
 		    }	
                 }
             }
