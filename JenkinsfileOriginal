@@ -1,20 +1,17 @@
 pipeline {
     agent any
     stages {
-	stage('Build') {
+    	stage('Git-checkout') {
 	    steps {
-		bat "mvn clean install"
+	        git credentialsId: 'github', url: 'https://github.com/cooldsachin/CI-with-Jenkins-in-AWS-Demo.git'
 	    }
 	}
-	stage('Quality-Gate') {
+	stage('Build') {
 	    steps {
-		script {
-		    withSonarQubeEnv("sonar") {
-		    	bat ('sonar.projectKey': 'myProject', 'sonar.java.binaries': 'project/target')
-		    }	
-                }
-            }
-        }
+		bat "mvn package"
+	    }
+	}
+	
 	stage('Deploy') {
 	    steps {
 		nexusPublisher nexusInstanceId: '1234', nexusRepositoryId: 'maven-releases', packages: [[$class: 'MavenPackage', mavenAssetList: [[classifier: '', extension: '', filePath: 'C:\\Program Files (x86)\\Jenkins\\jobs\\sonar-job\\workspace\\project\\target\\ProjectIGI-1.1.war']], mavenCoordinate: [artifactId: 'projectRnD', groupId: 'com.ci.jenkins', packaging: 'war', version: '1.2']]]
